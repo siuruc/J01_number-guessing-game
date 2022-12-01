@@ -12,14 +12,18 @@ while (newgame === true) {
   let foundCorrectNumber = false;
   while (!foundCorrectNumber) {
     // Step 1: Get user input (don't forget that the input is a string)
-    const guess = prompt("Please guess a number ");
+    const guess = Number(prompt("Please guess a number "));
 
     // Step 2: Compare the guess to the secret answer and
     // let the user know the feedback (too large, too small, correct).
-    if (numberInMind > guess) {
-      console.log("The number is too small \n");
+    if (Number.isInteger(guess) == false) {
+      console.log("Not valid, please guess again");
+    } else if (guess > 100 || guess < 1) {
+      console.log("Choose between 1-100, please guess again");
+    } else if (numberInMind > guess) {
+      console.log("The number is too small");
     } else if (numberInMind < guess) {
-      console.log("The number is too large \n");
+      console.log("The number is too large");
     } else {
       console.log("YOU WON!!!");
       foundCorrectNumber = true;
